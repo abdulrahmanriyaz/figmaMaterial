@@ -128,3 +128,15 @@ div>mat-slide-toggle {
   bottom: 15%;
   z-index: 9999;
 }
+
+.loaderText{
+  display: flex;align-items: center;padding:0.8rem
+}
+
+.subMenuDiv{
+  padding-inline:1rem;padding-block: 0.5rem;
+}
+
+.textAreaPadding ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix { 
+  padding-block: 12px;
+}

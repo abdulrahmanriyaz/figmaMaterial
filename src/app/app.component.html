@@ -5,37 +5,40 @@
   </mat-form-field>
 
   <div style="width: 80%;">
-    <mat-card *ngIf="loadingLibrary" class="loader" style="width: max-content;"   @onOff>
+
+    <!-- Loader -->
+    <mat-card *ngIf="loadingLibrary" class="loader" style="width: max-content;" @onOff>
       <mat-card-header style="padding: 0;">
-        <div class="" style="display: flex;align-items: center;padding:0.8rem">
+        <div class="loaderText">
           <mat-icon style="margin-right: 10px;" color="primary">{{loaderIcon}}</mat-icon>
           Switching to {{loaderPlaceholder}}
         </div>
-        <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
       </mat-card-header>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       </mat-card-footer>
     </mat-card>
+    <!-- Loader -->
+
     <button mat-mini-fab color="primary" matTooltip="New topic" matTooltipPosition="above" class="small-icon-button">
       <mat-icon>edit</mat-icon>
     </button>
 
-    <mat-form-field appearance="outline" style="width: 95%;">
+    <mat-form-field class="textAreaPadding" appearance="outline" style="width: 95%;">
       <textarea [placeholder]="textPlaceholder" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" style="resize: none;" matInput></textarea>
       <div class="textAreaContainer">
 
         <div class="queryChangeButtons">
-
           <button [matTooltip]="selectedMenu !== 1 ? 'Query internal knowledge':''"
-            [ngClass]="selectedMenu == 1 ? 'activeMenu':'inActiveMenu'" mat-button (click)="selectedMenu !== 1 && menuChanged(1)"
-            [matMenuTriggerFor]="selectedMenu == 1 ? menu: null">
+            [ngClass]="selectedMenu == 1 ? 'activeMenu':'inActiveMenu'" mat-button
+            (click)="selectedMenu !== 1 && menuChanged(1)" [matMenuTriggerFor]="selectedMenu == 1 ? menu: null">
             <mat-icon>menu_book</mat-icon>
             Internal Knowledge
           </button>
+
           <mat-menu #menu="matMenu">
-            <div style="padding-inline:1rem;padding-block: 0.5rem;" (click)="$event.stopPropagation()">
+            <div class="subMenuDiv" (click)="$event.stopPropagation()">
               <h4 class="popupHeading">Internal Knowledge</h4>
               <p class="popupText">Select which sources of information should be accessed to find the answers.
               </p>
@@ -74,16 +77,13 @@
                   <mat-slide-toggle checked="true" color="primary"></mat-slide-toggle>
                   <mat-icon class="smallerIcon">language</mat-icon>
                 </div>
-
                 <div class="secondaryDivInternal">
                   <span>
                     General public knowledge
                   </span>
                   <span style="color: black;">General data via GPT-4</span>
                 </div>
-
               </div>
-
             </div>
           </mat-menu>
 
@@ -98,7 +98,6 @@
             <mat-icon>auto_awesome</mat-icon>
             Gpt-4 Turbo
           </button>
-
         </div>
 
         <div>
